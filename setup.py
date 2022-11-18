@@ -6,8 +6,9 @@ import setuptools
 
 
 def get_requirements():
-    with open("requirements.txt", encoding="utf8") as f:
-        return f.read().splitlines()
+    base_dir = os.path.abspath(os.path.dirname(__file__))
+    with io.open(os.path.join(base_dir, "requirements.txt"), encoding="utf-8") as f:
+        return f.read()
 
 
 def get_long_description():
@@ -36,6 +37,9 @@ setuptools.setup(
     python_requires=">=3.5",
     install_requires=get_requirements(),
     include_package_data=True,
+    extras_require={
+        "dev": ["black==21.7b0", "flake8==3.9.2", "isort==5.9.2"],
+    },
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Operating System :: OS Independent",
