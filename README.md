@@ -17,7 +17,12 @@ pip install bytetracker
 
 ### Detection Model + ByteTrack 
 ```python
+from bytetracker import BYTETracker
 
+tracker = BYTETracker(args)
+for image in images:
+   dets = detector(image)
+   online_targets = tracker.update(dets)
 ```
 ### Reference:
  - [Yolov5-Pip](https://github.com/fcakyon/yolov5-pip)
