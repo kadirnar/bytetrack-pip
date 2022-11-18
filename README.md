@@ -1,7 +1,7 @@
 <div align="center">
-<h1>
+<h2>
   ByteTrack-Pip: Packaged version of the ByteTrack repository  
-</h1>
+</h2>
 <h4>
     <img width="700" alt="teaser" src="assets/demo.gif">
 </h4>
