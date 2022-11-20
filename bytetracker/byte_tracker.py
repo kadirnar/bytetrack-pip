@@ -1,14 +1,9 @@
-import copy
-import os
-import os.path as osp
-from collections import deque
 
 import numpy as np
-import torch
-import torch.nn.functional as F
-from drone_tracker.trackers.bytetrack import matching
-from drone_tracker.trackers.bytetrack.basetrack import BaseTrack, TrackState
-from drone_tracker.trackers.bytetrack.kalman_filter import KalmanFilter
+from bytetracker import matching
+from bytetracker.basetrack import BaseTrack, TrackState
+from bytetracker.kalman_filter import KalmanFilter
+
 from yolov5.utils.general import xywh2xyxy, xyxy2xywh
 
 
