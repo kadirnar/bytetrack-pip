@@ -1,10 +1,13 @@
 import lap
 import numpy as np
 import scipy
-from cython_bbox import bbox_overlaps as bbox_ious
 from bytetracker import kalman_filter
 from scipy.spatial.distance import cdist
 
+try:
+    from cython_bbox import bbox_overlaps as bbox_ious
+except ImportError:
+    raise ImportError("Please install cython_bbox from 'pip install cython_bbox'.")
 
 def merge_matches(m1, m2, shape):
     O, P, Q = shape

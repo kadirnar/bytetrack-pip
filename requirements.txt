@@ -1,4 +1,4 @@
-cython_bbox==0.1.3
+#cython_bbox==0.1.3
 lap==0.4.0
 scipy==1.9.3
 torch==1.13.0
