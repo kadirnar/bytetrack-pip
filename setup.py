@@ -22,6 +22,7 @@ def get_version():
     with io.open(version_file, encoding="utf-8") as f:
         return re.search(r'^__version__ = [\'"]([^\'"]*)[\'"]', f.read(), re.M).group(1)
 
+
 setuptools.setup(
     name="bytetracker",
     version=get_version(),

@@ -1,10 +1,9 @@
-
 import numpy as np
+from yolov5.utils.general import xywh2xyxy, xyxy2xywh
+
 from bytetracker import matching
 from bytetracker.basetrack import BaseTrack, TrackState
 from bytetracker.kalman_filter import KalmanFilter
-
-from yolov5.utils.general import xywh2xyxy, xyxy2xywh
 
 
 class STrack(BaseTrack):
@@ -13,7 +12,7 @@ class STrack(BaseTrack):
     def __init__(self, tlwh, score, cls):
 
         # wait activate
-        self._tlwh = np.asarray(tlwh, dtype=np.float)
+        self._tlwh = np.asarray(tlwh, dtype=float)
         self.kalman_filter = None
         self.mean, self.covariance = None, None
         self.is_activated = False
