@@ -50,5 +50,5 @@ setuptools.setup(
         "Topic :: Scientific/Engineering",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
-    keywords="machine-learning, deep-learning, pytorch, vision, image-classification, object-detection, object-tracking, tracker, bytetrack",
+    keywords="machine-learning, deep-learning, vision, image-classification, object-detection, object-tracking, tracker, bytetrack",
 )
