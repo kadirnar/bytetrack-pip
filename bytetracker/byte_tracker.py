@@ -203,9 +203,14 @@ class BYTETracker(object):
         confs = dets[:, 4]
         clss = dets[:, 5]
 
-        classes = clss.numpy()
-        xyxys = xyxys.numpy()
-        confs = confs.numpy()
+        try:
+            classes = clss.numpy()
+            xyxys = xyxys.numpy()
+            confs = confs.numpy()
+        except:
+            classes = clss
+            xyxys = xyxys
+            confs = confs
 
         remain_inds = confs > self.track_thresh
         inds_low = confs > 0.1
