@@ -18,13 +18,25 @@ def xywh2xyxy(x):
 
 
 def xyxy2xywh(x):
-    # Convert nx4 boxes from [x1, y1, x2, y2] to [x, y, w, h] where xy1=top-left, xy2=bottom-right
+    # Convert nx4 boxes from [x1, y1, x2, y2] to [cx, cy, w, h] where xy1=top-left, xy2=bottom-right
     try:
         y = x.clone()
     except:
         y = np.copy(x)
     y[:, 0] = (x[:, 0] + x[:, 2]) / 2  # x center
     y[:, 1] = (x[:, 1] + x[:, 3]) / 2  # y center
+    y[:, 2] = x[:, 2] - x[:, 0]  # width
+    y[:, 3] = x[:, 3] - x[:, 1]  # height
+    return y
+
+def xyxy2ltwh(x):
+    # Convert nx4 boxes from [x1, y1, x2, y2] to [x, y, w, h] where xy1=top-left, xy2=bottom-right
+    try:
+        y = x.clone()
+    except:
+        y = np.copy(x)
+    y[:, 0] = x[:, 0] # top
+    y[:, 1] = x[:, 1]   # left
     y[:, 2] = x[:, 2] - x[:, 0]  # width
     y[:, 3] = x[:, 3] - x[:, 1]  # height
     return y
@@ -199,7 +211,7 @@ class BYTETracker(object):
         removed_stracks = []
 
         xyxys = dets[:, 0:4]
-        xywh = xyxy2xywh(xyxys)
+        xywh = xyxy2ltwh(xyxys)
         confs = dets[:, 4]
         clss = dets[:, 5]
 
