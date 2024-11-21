@@ -210,10 +210,16 @@ class BYTETracker(object):
         lost_stracks = []
         removed_stracks = []
 
-        xyxys = dets[:, 0:4]
-        xywh = xyxy2ltwh(xyxys)
-        confs = dets[:, 4]
-        clss = dets[:, 5]
+        if len(dets):
+            xyxys = dets[:, 0:4]
+            xywh = xyxy2ltwh(xyxys)
+            confs = dets[:, 4]
+            clss = dets[:, 5]
+        else:
+            xyxys = np.array([])
+            xywh = np.array([])
+            confs = np.array([])
+            clss = np.array([])
 
         try:
             classes = clss.numpy()
